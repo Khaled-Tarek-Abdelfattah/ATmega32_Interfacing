@@ -1,0 +1,591 @@
+
+External_Interrupt.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000362  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000003b6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000003b6  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000003e8  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000e8  00000000  00000000  00000424  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000103b  00000000  00000000  0000050c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000841  00000000  00000000  00001547  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000854  00000000  00000000  00001d88  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001b0  00000000  00000000  000025dc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000006ac  00000000  00000000  0000278c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000781  00000000  00000000  00002e38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000098  00000000  00000000  000035b9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 32 00 	jmp	0x64	; 0x64 <__ctors_end>
+   4:	0c 94 52 01 	jmp	0x2a4	; 0x2a4 <__vector_1>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  54:	90 00       	.word	0x0090	; ????
+  56:	95 00       	.word	0x0095	; ????
+  58:	9a 00       	.word	0x009a	; ????
+  5a:	9f 00       	.word	0x009f	; ????
+  5c:	a4 00       	.word	0x00a4	; ????
+  5e:	a9 00       	.word	0x00a9	; ????
+  60:	ae 00       	.word	0x00ae	; ????
+  62:	b3 00       	.word	0x00b3	; ????
+
+00000064 <__ctors_end>:
+  64:	11 24       	eor	r1, r1
+  66:	1f be       	out	0x3f, r1	; 63
+  68:	cf e5       	ldi	r28, 0x5F	; 95
+  6a:	d8 e0       	ldi	r29, 0x08	; 8
+  6c:	de bf       	out	0x3e, r29	; 62
+  6e:	cd bf       	out	0x3d, r28	; 61
+  70:	0e 94 7d 01 	call	0x2fa	; 0x2fa <main>
+  74:	0c 94 af 01 	jmp	0x35e	; 0x35e <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <DioDirectionSet>:
+			break;
+		default:
+			break;
+	}
+	
+}
+  7c:	81 30       	cpi	r24, 0x01	; 1
+  7e:	41 f0       	breq	.+16     	; 0x90 <DioDirectionSet+0x14>
+  80:	80 f0       	brcs	.+32     	; 0xa2 <DioDirectionSet+0x26>
+  82:	82 30       	cpi	r24, 0x02	; 2
+  84:	41 f0       	breq	.+16     	; 0x96 <DioDirectionSet+0x1a>
+  86:	83 30       	cpi	r24, 0x03	; 3
+  88:	49 f0       	breq	.+18     	; 0x9c <DioDirectionSet+0x20>
+  8a:	e0 e0       	ldi	r30, 0x00	; 0
+  8c:	f0 e0       	ldi	r31, 0x00	; 0
+  8e:	0b c0       	rjmp	.+22     	; 0xa6 <DioDirectionSet+0x2a>
+  90:	e7 e3       	ldi	r30, 0x37	; 55
+  92:	f0 e0       	ldi	r31, 0x00	; 0
+  94:	08 c0       	rjmp	.+16     	; 0xa6 <DioDirectionSet+0x2a>
+  96:	e4 e3       	ldi	r30, 0x34	; 52
+  98:	f0 e0       	ldi	r31, 0x00	; 0
+  9a:	05 c0       	rjmp	.+10     	; 0xa6 <DioDirectionSet+0x2a>
+  9c:	e1 e3       	ldi	r30, 0x31	; 49
+  9e:	f0 e0       	ldi	r31, 0x00	; 0
+  a0:	02 c0       	rjmp	.+4      	; 0xa6 <DioDirectionSet+0x2a>
+  a2:	ea e3       	ldi	r30, 0x3A	; 58
+  a4:	f0 e0       	ldi	r31, 0x00	; 0
+  a6:	44 23       	and	r20, r20
+  a8:	19 f0       	breq	.+6      	; 0xb0 <DioDirectionSet+0x34>
+  aa:	41 30       	cpi	r20, 0x01	; 1
+  ac:	69 f0       	breq	.+26     	; 0xc8 <DioDirectionSet+0x4c>
+  ae:	08 95       	ret
+  b0:	20 81       	ld	r18, Z
+  b2:	81 e0       	ldi	r24, 0x01	; 1
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	02 c0       	rjmp	.+4      	; 0xbc <DioDirectionSet+0x40>
+  b8:	88 0f       	add	r24, r24
+  ba:	99 1f       	adc	r25, r25
+  bc:	6a 95       	dec	r22
+  be:	e2 f7       	brpl	.-8      	; 0xb8 <DioDirectionSet+0x3c>
+  c0:	80 95       	com	r24
+  c2:	82 23       	and	r24, r18
+  c4:	80 83       	st	Z, r24
+  c6:	08 95       	ret
+  c8:	20 81       	ld	r18, Z
+  ca:	81 e0       	ldi	r24, 0x01	; 1
+  cc:	90 e0       	ldi	r25, 0x00	; 0
+  ce:	02 c0       	rjmp	.+4      	; 0xd4 <DioDirectionSet+0x58>
+  d0:	88 0f       	add	r24, r24
+  d2:	99 1f       	adc	r25, r25
+  d4:	6a 95       	dec	r22
+  d6:	e2 f7       	brpl	.-8      	; 0xd0 <DioDirectionSet+0x54>
+  d8:	82 2b       	or	r24, r18
+  da:	80 83       	st	Z, r24
+  dc:	08 95       	ret
+
+000000de <DioChannelToggle>:
+void DioChannelToggle(Dio_PortEnum_t port,Dio_PinEnum_t pin){
+  de:	cf 93       	push	r28
+  e0:	df 93       	push	r29
+	volatile uint8 *pu8Reg=NULL_PTR;
+	switch(port){
+  e2:	81 30       	cpi	r24, 0x01	; 1
+  e4:	41 f0       	breq	.+16     	; 0xf6 <DioChannelToggle+0x18>
+  e6:	80 f0       	brcs	.+32     	; 0x108 <DioChannelToggle+0x2a>
+  e8:	82 30       	cpi	r24, 0x02	; 2
+  ea:	41 f0       	breq	.+16     	; 0xfc <DioChannelToggle+0x1e>
+  ec:	83 30       	cpi	r24, 0x03	; 3
+  ee:	49 f0       	breq	.+18     	; 0x102 <DioChannelToggle+0x24>
+			break;
+	}
+	
+}
+void DioChannelToggle(Dio_PortEnum_t port,Dio_PinEnum_t pin){
+	volatile uint8 *pu8Reg=NULL_PTR;
+  f0:	c0 e0       	ldi	r28, 0x00	; 0
+  f2:	d0 e0       	ldi	r29, 0x00	; 0
+  f4:	0b c0       	rjmp	.+22     	; 0x10c <DioChannelToggle+0x2e>
+	switch(port){
+		case DIO_PORTA:
+			pu8Reg=PORTA_OUTPUT_REG;
+			break;
+		case DIO_PORTB:
+			pu8Reg=PORTB_OUTPUT_REG;
+  f6:	c8 e3       	ldi	r28, 0x38	; 56
+  f8:	d0 e0       	ldi	r29, 0x00	; 0
+			break;
+  fa:	08 c0       	rjmp	.+16     	; 0x10c <DioChannelToggle+0x2e>
+		case DIO_PORTC:
+			pu8Reg=PORTC_OUTPUT_REG;
+  fc:	c5 e3       	ldi	r28, 0x35	; 53
+  fe:	d0 e0       	ldi	r29, 0x00	; 0
+			break;
+ 100:	05 c0       	rjmp	.+10     	; 0x10c <DioChannelToggle+0x2e>
+		case DIO_PORTD:
+			pu8Reg=PORTD_OUTPUT_REG;
+ 102:	c2 e3       	ldi	r28, 0x32	; 50
+ 104:	d0 e0       	ldi	r29, 0x00	; 0
+			break;
+ 106:	02 c0       	rjmp	.+4      	; 0x10c <DioChannelToggle+0x2e>
+}
+void DioChannelToggle(Dio_PortEnum_t port,Dio_PinEnum_t pin){
+	volatile uint8 *pu8Reg=NULL_PTR;
+	switch(port){
+		case DIO_PORTA:
+			pu8Reg=PORTA_OUTPUT_REG;
+ 108:	cb e3       	ldi	r28, 0x3B	; 59
+ 10a:	d0 e0       	ldi	r29, 0x00	; 0
+			pu8Reg=PORTD_OUTPUT_REG;
+			break;
+		default:
+			break;
+	}
+	switch(pin){
+ 10c:	86 2f       	mov	r24, r22
+ 10e:	90 e0       	ldi	r25, 0x00	; 0
+ 110:	88 30       	cpi	r24, 0x08	; 8
+ 112:	91 05       	cpc	r25, r1
+ 114:	58 f5       	brcc	.+86     	; 0x16c <DioChannelToggle+0x8e>
+ 116:	fc 01       	movw	r30, r24
+ 118:	e6 5d       	subi	r30, 0xD6	; 214
+ 11a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 11c:	0c 94 a9 01 	jmp	0x352	; 0x352 <__tablejump2__>
+		case DIO_PIN0:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN0);
+ 120:	98 81       	ld	r25, Y
+ 122:	81 e0       	ldi	r24, 0x01	; 1
+ 124:	89 27       	eor	r24, r25
+ 126:	88 83       	st	Y, r24
+			break;
+ 128:	21 c0       	rjmp	.+66     	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN1:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN1);
+ 12a:	98 81       	ld	r25, Y
+ 12c:	82 e0       	ldi	r24, 0x02	; 2
+ 12e:	89 27       	eor	r24, r25
+ 130:	88 83       	st	Y, r24
+			break;
+ 132:	1c c0       	rjmp	.+56     	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN2:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN2);
+ 134:	98 81       	ld	r25, Y
+ 136:	84 e0       	ldi	r24, 0x04	; 4
+ 138:	89 27       	eor	r24, r25
+ 13a:	88 83       	st	Y, r24
+			break;
+ 13c:	17 c0       	rjmp	.+46     	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN3:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN3);
+ 13e:	98 81       	ld	r25, Y
+ 140:	88 e0       	ldi	r24, 0x08	; 8
+ 142:	89 27       	eor	r24, r25
+ 144:	88 83       	st	Y, r24
+			break;
+ 146:	12 c0       	rjmp	.+36     	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN4:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN4);
+ 148:	98 81       	ld	r25, Y
+ 14a:	80 e1       	ldi	r24, 0x10	; 16
+ 14c:	89 27       	eor	r24, r25
+ 14e:	88 83       	st	Y, r24
+			break;
+ 150:	0d c0       	rjmp	.+26     	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN5:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN5);
+ 152:	98 81       	ld	r25, Y
+ 154:	80 e2       	ldi	r24, 0x20	; 32
+ 156:	89 27       	eor	r24, r25
+ 158:	88 83       	st	Y, r24
+			break;
+ 15a:	08 c0       	rjmp	.+16     	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN6:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN6);
+ 15c:	98 81       	ld	r25, Y
+ 15e:	80 e4       	ldi	r24, 0x40	; 64
+ 160:	89 27       	eor	r24, r25
+ 162:	88 83       	st	Y, r24
+			break;
+ 164:	03 c0       	rjmp	.+6      	; 0x16c <DioChannelToggle+0x8e>
+		case DIO_PIN7:
+			TOGGLE_BIT(*pu8Reg,DIO_PIN7);
+ 166:	88 81       	ld	r24, Y
+ 168:	80 58       	subi	r24, 0x80	; 128
+ 16a:	88 83       	st	Y, r24
+			break;
+		default:
+			break;
+	}
+	
+}
+ 16c:	df 91       	pop	r29
+ 16e:	cf 91       	pop	r28
+ 170:	08 95       	ret
+
+00000172 <ExtInterrupt_Enable>:
+		break;
+		case EXT_INT1:
+		CLEAR_BIT(*GENRAL_INT_CTRL_REG, INT1_ENABLE_BIT);
+		break;
+		case EXT_INT2:
+		CLEAR_BIT(*GENRAL_INT_CTRL_REG, INT2_ENABLE_BIT);
+ 172:	81 30       	cpi	r24, 0x01	; 1
+ 174:	59 f1       	breq	.+86     	; 0x1cc <ExtInterrupt_Enable+0x5a>
+ 176:	20 f0       	brcs	.+8      	; 0x180 <ExtInterrupt_Enable+0xe>
+ 178:	82 30       	cpi	r24, 0x02	; 2
+ 17a:	09 f4       	brne	.+2      	; 0x17e <ExtInterrupt_Enable+0xc>
+ 17c:	4d c0       	rjmp	.+154    	; 0x218 <ExtInterrupt_Enable+0xa6>
+ 17e:	08 95       	ret
+ 180:	61 30       	cpi	r22, 0x01	; 1
+ 182:	99 f0       	breq	.+38     	; 0x1aa <ExtInterrupt_Enable+0x38>
+ 184:	c8 f0       	brcs	.+50     	; 0x1b8 <ExtInterrupt_Enable+0x46>
+ 186:	62 30       	cpi	r22, 0x02	; 2
+ 188:	49 f0       	breq	.+18     	; 0x19c <ExtInterrupt_Enable+0x2a>
+ 18a:	63 30       	cpi	r22, 0x03	; 3
+ 18c:	d9 f4       	brne	.+54     	; 0x1c4 <ExtInterrupt_Enable+0x52>
+ 18e:	85 b7       	in	r24, 0x35	; 53
+ 190:	8e 7f       	andi	r24, 0xFE	; 254
+ 192:	85 bf       	out	0x35, r24	; 53
+ 194:	85 b7       	in	r24, 0x35	; 53
+ 196:	8d 7f       	andi	r24, 0xFD	; 253
+ 198:	85 bf       	out	0x35, r24	; 53
+ 19a:	14 c0       	rjmp	.+40     	; 0x1c4 <ExtInterrupt_Enable+0x52>
+ 19c:	85 b7       	in	r24, 0x35	; 53
+ 19e:	81 60       	ori	r24, 0x01	; 1
+ 1a0:	85 bf       	out	0x35, r24	; 53
+ 1a2:	85 b7       	in	r24, 0x35	; 53
+ 1a4:	8d 7f       	andi	r24, 0xFD	; 253
+ 1a6:	85 bf       	out	0x35, r24	; 53
+ 1a8:	0d c0       	rjmp	.+26     	; 0x1c4 <ExtInterrupt_Enable+0x52>
+ 1aa:	85 b7       	in	r24, 0x35	; 53
+ 1ac:	8e 7f       	andi	r24, 0xFE	; 254
+ 1ae:	85 bf       	out	0x35, r24	; 53
+ 1b0:	85 b7       	in	r24, 0x35	; 53
+ 1b2:	82 60       	ori	r24, 0x02	; 2
+ 1b4:	85 bf       	out	0x35, r24	; 53
+ 1b6:	06 c0       	rjmp	.+12     	; 0x1c4 <ExtInterrupt_Enable+0x52>
+ 1b8:	85 b7       	in	r24, 0x35	; 53
+ 1ba:	81 60       	ori	r24, 0x01	; 1
+ 1bc:	85 bf       	out	0x35, r24	; 53
+ 1be:	85 b7       	in	r24, 0x35	; 53
+ 1c0:	82 60       	ori	r24, 0x02	; 2
+ 1c2:	85 bf       	out	0x35, r24	; 53
+ 1c4:	8b b7       	in	r24, 0x3b	; 59
+ 1c6:	80 64       	ori	r24, 0x40	; 64
+ 1c8:	8b bf       	out	0x3b, r24	; 59
+ 1ca:	08 95       	ret
+ 1cc:	61 30       	cpi	r22, 0x01	; 1
+ 1ce:	99 f0       	breq	.+38     	; 0x1f6 <ExtInterrupt_Enable+0x84>
+ 1d0:	c8 f0       	brcs	.+50     	; 0x204 <ExtInterrupt_Enable+0x92>
+ 1d2:	62 30       	cpi	r22, 0x02	; 2
+ 1d4:	49 f0       	breq	.+18     	; 0x1e8 <ExtInterrupt_Enable+0x76>
+ 1d6:	63 30       	cpi	r22, 0x03	; 3
+ 1d8:	d9 f4       	brne	.+54     	; 0x210 <ExtInterrupt_Enable+0x9e>
+ 1da:	85 b7       	in	r24, 0x35	; 53
+ 1dc:	8b 7f       	andi	r24, 0xFB	; 251
+ 1de:	85 bf       	out	0x35, r24	; 53
+ 1e0:	85 b7       	in	r24, 0x35	; 53
+ 1e2:	87 7f       	andi	r24, 0xF7	; 247
+ 1e4:	85 bf       	out	0x35, r24	; 53
+ 1e6:	14 c0       	rjmp	.+40     	; 0x210 <ExtInterrupt_Enable+0x9e>
+ 1e8:	85 b7       	in	r24, 0x35	; 53
+ 1ea:	84 60       	ori	r24, 0x04	; 4
+ 1ec:	85 bf       	out	0x35, r24	; 53
+ 1ee:	85 b7       	in	r24, 0x35	; 53
+ 1f0:	87 7f       	andi	r24, 0xF7	; 247
+ 1f2:	85 bf       	out	0x35, r24	; 53
+ 1f4:	0d c0       	rjmp	.+26     	; 0x210 <ExtInterrupt_Enable+0x9e>
+ 1f6:	85 b7       	in	r24, 0x35	; 53
+ 1f8:	8b 7f       	andi	r24, 0xFB	; 251
+ 1fa:	85 bf       	out	0x35, r24	; 53
+ 1fc:	85 b7       	in	r24, 0x35	; 53
+ 1fe:	88 60       	ori	r24, 0x08	; 8
+ 200:	85 bf       	out	0x35, r24	; 53
+ 202:	06 c0       	rjmp	.+12     	; 0x210 <ExtInterrupt_Enable+0x9e>
+ 204:	85 b7       	in	r24, 0x35	; 53
+ 206:	84 60       	ori	r24, 0x04	; 4
+ 208:	85 bf       	out	0x35, r24	; 53
+ 20a:	85 b7       	in	r24, 0x35	; 53
+ 20c:	88 60       	ori	r24, 0x08	; 8
+ 20e:	85 bf       	out	0x35, r24	; 53
+ 210:	8b b7       	in	r24, 0x3b	; 59
+ 212:	80 68       	ori	r24, 0x80	; 128
+ 214:	8b bf       	out	0x3b, r24	; 59
+ 216:	08 95       	ret
+ 218:	66 23       	and	r22, r22
+ 21a:	31 f0       	breq	.+12     	; 0x228 <ExtInterrupt_Enable+0xb6>
+ 21c:	61 30       	cpi	r22, 0x01	; 1
+ 21e:	39 f4       	brne	.+14     	; 0x22e <ExtInterrupt_Enable+0xbc>
+ 220:	84 b7       	in	r24, 0x34	; 52
+ 222:	8f 7b       	andi	r24, 0xBF	; 191
+ 224:	84 bf       	out	0x34, r24	; 52
+ 226:	08 95       	ret
+ 228:	84 b7       	in	r24, 0x34	; 52
+ 22a:	80 64       	ori	r24, 0x40	; 64
+ 22c:	84 bf       	out	0x34, r24	; 52
+ 22e:	08 95       	ret
+
+00000230 <GlobaleInterrupts_StateSet>:
+		break;
+	}
+}
+void GlobaleInterrupts_StateSet(GlobalInterruptsStateEnum_t State)
+{
+	switch(State)
+ 230:	88 23       	and	r24, r24
+ 232:	19 f0       	breq	.+6      	; 0x23a <GlobaleInterrupts_StateSet+0xa>
+ 234:	81 30       	cpi	r24, 0x01	; 1
+ 236:	29 f0       	breq	.+10     	; 0x242 <GlobaleInterrupts_StateSet+0x12>
+ 238:	08 95       	ret
+	{
+		case GLOBAL_INTERRUPTS_DISABLE:
+		CLEAR_BIT(*AVR_STATUS_REG, GLOBALE_INTERRUPTS_ENABLE_BIT);
+ 23a:	8f b7       	in	r24, 0x3f	; 63
+ 23c:	8f 77       	andi	r24, 0x7F	; 127
+ 23e:	8f bf       	out	0x3f, r24	; 63
+		break;
+ 240:	08 95       	ret
+		case GLOBAL_INTERRUPTS_ENABLE:
+		SET_BIT(*AVR_STATUS_REG, GLOBALE_INTERRUPTS_ENABLE_BIT);
+ 242:	8f b7       	in	r24, 0x3f	; 63
+ 244:	80 68       	ori	r24, 0x80	; 128
+ 246:	8f bf       	out	0x3f, r24	; 63
+ 248:	08 95       	ret
+
+0000024a <Led_Init>:
+			switch(state){
+				case LED_ON:
+					DioChannelWrite(DIO_PORTD,DIO_PIN3,DIO_HIGH);
+					break;
+				case LED_OFF:
+					DioChannelWrite(DIO_PORTD,DIO_PIN3,DIO_LOW);
+ 24a:	81 30       	cpi	r24, 0x01	; 1
+ 24c:	51 f0       	breq	.+20     	; 0x262 <Led_Init+0x18>
+ 24e:	18 f0       	brcs	.+6      	; 0x256 <Led_Init+0xc>
+ 250:	82 30       	cpi	r24, 0x02	; 2
+ 252:	69 f0       	breq	.+26     	; 0x26e <Led_Init+0x24>
+ 254:	08 95       	ret
+ 256:	41 e0       	ldi	r20, 0x01	; 1
+ 258:	62 e0       	ldi	r22, 0x02	; 2
+ 25a:	82 e0       	ldi	r24, 0x02	; 2
+ 25c:	0e 94 3e 00 	call	0x7c	; 0x7c <DioDirectionSet>
+ 260:	08 95       	ret
+ 262:	41 e0       	ldi	r20, 0x01	; 1
+ 264:	67 e0       	ldi	r22, 0x07	; 7
+ 266:	82 e0       	ldi	r24, 0x02	; 2
+ 268:	0e 94 3e 00 	call	0x7c	; 0x7c <DioDirectionSet>
+ 26c:	08 95       	ret
+ 26e:	41 e0       	ldi	r20, 0x01	; 1
+ 270:	63 e0       	ldi	r22, 0x03	; 3
+ 272:	83 e0       	ldi	r24, 0x03	; 3
+ 274:	0e 94 3e 00 	call	0x7c	; 0x7c <DioDirectionSet>
+ 278:	08 95       	ret
+
+0000027a <Led_Toggle>:
+		}
+		break;
+	}
+}
+void Led_Toggle(LedEnum_t led){
+	switch(led){
+ 27a:	81 30       	cpi	r24, 0x01	; 1
+ 27c:	49 f0       	breq	.+18     	; 0x290 <Led_Toggle+0x16>
+ 27e:	18 f0       	brcs	.+6      	; 0x286 <Led_Toggle+0xc>
+ 280:	82 30       	cpi	r24, 0x02	; 2
+ 282:	59 f0       	breq	.+22     	; 0x29a <Led_Toggle+0x20>
+ 284:	08 95       	ret
+		case LED_0:
+			DioChannelToggle(DIO_PORTC,DIO_PIN2);
+ 286:	62 e0       	ldi	r22, 0x02	; 2
+ 288:	82 e0       	ldi	r24, 0x02	; 2
+ 28a:	0e 94 6f 00 	call	0xde	; 0xde <DioChannelToggle>
+			break;
+ 28e:	08 95       	ret
+		case LED_1:
+			DioChannelToggle(DIO_PORTC,DIO_PIN7);
+ 290:	67 e0       	ldi	r22, 0x07	; 7
+ 292:	82 e0       	ldi	r24, 0x02	; 2
+ 294:	0e 94 6f 00 	call	0xde	; 0xde <DioChannelToggle>
+			break;
+ 298:	08 95       	ret
+		case LED_2:
+			DioChannelToggle(DIO_PORTD,DIO_PIN3);
+ 29a:	63 e0       	ldi	r22, 0x03	; 3
+ 29c:	83 e0       	ldi	r24, 0x03	; 3
+ 29e:	0e 94 6f 00 	call	0xde	; 0xde <DioChannelToggle>
+ 2a2:	08 95       	ret
+
+000002a4 <__vector_1>:
+#include "LED_Interface.h"
+#include "SWITCH_Interface.h"
+#include <avr/interrupt.h>
+
+ISR(INT0_vect)
+{
+ 2a4:	1f 92       	push	r1
+ 2a6:	0f 92       	push	r0
+ 2a8:	0f b6       	in	r0, 0x3f	; 63
+ 2aa:	0f 92       	push	r0
+ 2ac:	11 24       	eor	r1, r1
+ 2ae:	2f 93       	push	r18
+ 2b0:	3f 93       	push	r19
+ 2b2:	4f 93       	push	r20
+ 2b4:	5f 93       	push	r21
+ 2b6:	6f 93       	push	r22
+ 2b8:	7f 93       	push	r23
+ 2ba:	8f 93       	push	r24
+ 2bc:	9f 93       	push	r25
+ 2be:	af 93       	push	r26
+ 2c0:	bf 93       	push	r27
+ 2c2:	ef 93       	push	r30
+ 2c4:	ff 93       	push	r31
+	/* Toggle LED */
+	Led_Toggle(LED_0);
+ 2c6:	80 e0       	ldi	r24, 0x00	; 0
+ 2c8:	0e 94 3d 01 	call	0x27a	; 0x27a <Led_Toggle>
+	Led_Toggle(LED_1);
+ 2cc:	81 e0       	ldi	r24, 0x01	; 1
+ 2ce:	0e 94 3d 01 	call	0x27a	; 0x27a <Led_Toggle>
+	Led_Toggle(LED_2);
+ 2d2:	82 e0       	ldi	r24, 0x02	; 2
+ 2d4:	0e 94 3d 01 	call	0x27a	; 0x27a <Led_Toggle>
+}
+ 2d8:	ff 91       	pop	r31
+ 2da:	ef 91       	pop	r30
+ 2dc:	bf 91       	pop	r27
+ 2de:	af 91       	pop	r26
+ 2e0:	9f 91       	pop	r25
+ 2e2:	8f 91       	pop	r24
+ 2e4:	7f 91       	pop	r23
+ 2e6:	6f 91       	pop	r22
+ 2e8:	5f 91       	pop	r21
+ 2ea:	4f 91       	pop	r20
+ 2ec:	3f 91       	pop	r19
+ 2ee:	2f 91       	pop	r18
+ 2f0:	0f 90       	pop	r0
+ 2f2:	0f be       	out	0x3f, r0	; 63
+ 2f4:	0f 90       	pop	r0
+ 2f6:	1f 90       	pop	r1
+ 2f8:	18 95       	reti
+
+000002fa <main>:
+
+int main(void)
+{
+    ExtInterrupt_Enable(EXT_INT0, RISING_EDGE_MODE);
+ 2fa:	60 e0       	ldi	r22, 0x00	; 0
+ 2fc:	80 e0       	ldi	r24, 0x00	; 0
+ 2fe:	0e 94 b9 00 	call	0x172	; 0x172 <ExtInterrupt_Enable>
+	GlobaleInterrupts_StateSet(GLOBAL_INTERRUPTS_ENABLE);
+ 302:	81 e0       	ldi	r24, 0x01	; 1
+ 304:	0e 94 18 01 	call	0x230	; 0x230 <GlobaleInterrupts_StateSet>
+	Switch_Init(SWITCH_2);
+ 308:	82 e0       	ldi	r24, 0x02	; 2
+ 30a:	0e 94 91 01 	call	0x322	; 0x322 <Switch_Init>
+	Led_Init(LED_0);
+ 30e:	80 e0       	ldi	r24, 0x00	; 0
+ 310:	0e 94 25 01 	call	0x24a	; 0x24a <Led_Init>
+	Led_Init(LED_1);
+ 314:	81 e0       	ldi	r24, 0x01	; 1
+ 316:	0e 94 25 01 	call	0x24a	; 0x24a <Led_Init>
+	Led_Init(LED_2);
+ 31a:	82 e0       	ldi	r24, 0x02	; 2
+ 31c:	0e 94 25 01 	call	0x24a	; 0x24a <Led_Init>
+ 320:	ff cf       	rjmp	.-2      	; 0x320 <main+0x26>
+
+00000322 <Switch_Init>:
+#include "SWITCH_Interface.h"
+#include "Dio.h"
+
+void Switch_Init(Switch_t switch_Button){
+	switch(switch_Button){
+ 322:	81 30       	cpi	r24, 0x01	; 1
+ 324:	51 f0       	breq	.+20     	; 0x33a <Switch_Init+0x18>
+ 326:	18 f0       	brcs	.+6      	; 0x32e <Switch_Init+0xc>
+ 328:	82 30       	cpi	r24, 0x02	; 2
+ 32a:	69 f0       	breq	.+26     	; 0x346 <Switch_Init+0x24>
+ 32c:	08 95       	ret
+		case SWITCH_0:
+				DioDirectionSet(DIO_PORTB,DIO_PIN0,DIO_INPUT);
+ 32e:	40 e0       	ldi	r20, 0x00	; 0
+ 330:	60 e0       	ldi	r22, 0x00	; 0
+ 332:	81 e0       	ldi	r24, 0x01	; 1
+ 334:	0e 94 3e 00 	call	0x7c	; 0x7c <DioDirectionSet>
+				break;
+ 338:	08 95       	ret
+			case SWITCH_1:
+				DioDirectionSet(DIO_PORTD,DIO_PIN6,DIO_INPUT);
+ 33a:	40 e0       	ldi	r20, 0x00	; 0
+ 33c:	66 e0       	ldi	r22, 0x06	; 6
+ 33e:	83 e0       	ldi	r24, 0x03	; 3
+ 340:	0e 94 3e 00 	call	0x7c	; 0x7c <DioDirectionSet>
+				break;
+ 344:	08 95       	ret
+			case SWITCH_2:
+				DioDirectionSet(DIO_PORTD,DIO_PIN2,DIO_INPUT);
+ 346:	40 e0       	ldi	r20, 0x00	; 0
+ 348:	62 e0       	ldi	r22, 0x02	; 2
+ 34a:	83 e0       	ldi	r24, 0x03	; 3
+ 34c:	0e 94 3e 00 	call	0x7c	; 0x7c <DioDirectionSet>
+ 350:	08 95       	ret
+
+00000352 <__tablejump2__>:
+ 352:	ee 0f       	add	r30, r30
+ 354:	ff 1f       	adc	r31, r31
+ 356:	05 90       	lpm	r0, Z+
+ 358:	f4 91       	lpm	r31, Z
+ 35a:	e0 2d       	mov	r30, r0
+ 35c:	09 94       	ijmp
+
+0000035e <_exit>:
+ 35e:	f8 94       	cli
+
+00000360 <__stop_program>:
+ 360:	ff cf       	rjmp	.-2      	; 0x360 <__stop_program>
