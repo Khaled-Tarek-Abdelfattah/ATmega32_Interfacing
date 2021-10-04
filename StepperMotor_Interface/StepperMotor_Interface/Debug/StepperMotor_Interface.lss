@@ -1,0 +1,234 @@
+
+StepperMotor_Interface.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000140  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000004  00800060  00000140  000001b4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000001b8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001e8  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000090  00000000  00000000  00000224  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000acc  00000000  00000000  000002b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000741  00000000  00000000  00000d80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000059f  00000000  00000000  000014c1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000d8  00000000  00000000  00001a60  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000520  00000000  00000000  00001b38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000259  00000000  00000000  00002058  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000060  00000000  00000000  000022b1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e4       	ldi	r30, 0x40	; 64
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a4 36       	cpi	r26, 0x64	; 100
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a4 e6       	ldi	r26, 0x64	; 100
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a4 36       	cpi	r26, 0x64	; 100
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 67 00 	call	0xce	; 0xce <main>
+  8a:	0c 94 9e 00 	jmp	0x13c	; 0x13c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <DioDirectionSet>:
+#include "Dio.h"
+#include "ATMEGA32A_Config.h"
+#include "Macros.h"
+
+void DioDirectionSet(volatile uint8 * port,Dio_PinEnum_t pin,Dio_PinDirEnum_t dir){
+	switch(dir){
+  92:	44 23       	and	r20, r20
+  94:	19 f0       	breq	.+6      	; 0x9c <DioDirectionSet+0xa>
+  96:	41 30       	cpi	r20, 0x01	; 1
+  98:	71 f0       	breq	.+28     	; 0xb6 <DioDirectionSet+0x24>
+  9a:	08 95       	ret
+		case DIO_INPUT:
+			CLEAR_BIT(*port,pin);
+  9c:	fc 01       	movw	r30, r24
+  9e:	40 81       	ld	r20, Z
+  a0:	21 e0       	ldi	r18, 0x01	; 1
+  a2:	30 e0       	ldi	r19, 0x00	; 0
+  a4:	02 c0       	rjmp	.+4      	; 0xaa <DioDirectionSet+0x18>
+  a6:	22 0f       	add	r18, r18
+  a8:	33 1f       	adc	r19, r19
+  aa:	6a 95       	dec	r22
+  ac:	e2 f7       	brpl	.-8      	; 0xa6 <DioDirectionSet+0x14>
+  ae:	20 95       	com	r18
+  b0:	24 23       	and	r18, r20
+  b2:	20 83       	st	Z, r18
+			break;
+  b4:	08 95       	ret
+		case DIO_OUTPUT:
+			SET_BIT(*port,pin);
+  b6:	fc 01       	movw	r30, r24
+  b8:	40 81       	ld	r20, Z
+  ba:	21 e0       	ldi	r18, 0x01	; 1
+  bc:	30 e0       	ldi	r19, 0x00	; 0
+  be:	02 c0       	rjmp	.+4      	; 0xc4 <DioDirectionSet+0x32>
+  c0:	22 0f       	add	r18, r18
+  c2:	33 1f       	adc	r19, r19
+  c4:	6a 95       	dec	r22
+  c6:	e2 f7       	brpl	.-8      	; 0xc0 <DioDirectionSet+0x2e>
+  c8:	24 2b       	or	r18, r20
+  ca:	20 83       	st	Z, r18
+  cc:	08 95       	ret
+
+000000ce <main>:
+#include "StepperMotor_Interface.h"
+#include "SWITCH_Interface.h"
+
+int main(void)
+{
+    StepperMotor_Init();
+  ce:	0e 94 6c 00 	call	0xd8	; 0xd8 <StepperMotor_Init>
+    while (1) 
+    {
+		StepperMotor_TurnCCW();
+  d2:	0e 94 85 00 	call	0x10a	; 0x10a <StepperMotor_TurnCCW>
+  d6:	fd cf       	rjmp	.-6      	; 0xd2 <main+0x4>
+
+000000d8 <StepperMotor_Init>:
+	
+}
+void StepperMotor_TurnCW(void){
+	uint8 u8LocalLoopIndex=0U;
+	while(1){
+		for (u8LocalLoopIndex=0;u8LocalLoopIndex<4U;u8LocalLoopIndex++)
+  d8:	41 e0       	ldi	r20, 0x01	; 1
+  da:	64 e0       	ldi	r22, 0x04	; 4
+  dc:	8a e3       	ldi	r24, 0x3A	; 58
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	0e 94 49 00 	call	0x92	; 0x92 <DioDirectionSet>
+  e4:	41 e0       	ldi	r20, 0x01	; 1
+  e6:	65 e0       	ldi	r22, 0x05	; 5
+  e8:	8a e3       	ldi	r24, 0x3A	; 58
+  ea:	90 e0       	ldi	r25, 0x00	; 0
+  ec:	0e 94 49 00 	call	0x92	; 0x92 <DioDirectionSet>
+  f0:	41 e0       	ldi	r20, 0x01	; 1
+  f2:	66 e0       	ldi	r22, 0x06	; 6
+  f4:	8a e3       	ldi	r24, 0x3A	; 58
+  f6:	90 e0       	ldi	r25, 0x00	; 0
+  f8:	0e 94 49 00 	call	0x92	; 0x92 <DioDirectionSet>
+  fc:	41 e0       	ldi	r20, 0x01	; 1
+  fe:	67 e0       	ldi	r22, 0x07	; 7
+ 100:	8a e3       	ldi	r24, 0x3A	; 58
+ 102:	90 e0       	ldi	r25, 0x00	; 0
+ 104:	0e 94 49 00 	call	0x92	; 0x92 <DioDirectionSet>
+ 108:	08 95       	ret
+
+0000010a <StepperMotor_TurnCCW>:
+	}*/
+}
+void StepperMotor_TurnCCW(void){
+	sint8 s8LocalLoopIndex;
+	while(1){
+		for (s8LocalLoopIndex=3;s8LocalLoopIndex >= 0;s8LocalLoopIndex--)
+ 10a:	83 e0       	ldi	r24, 0x03	; 3
+ 10c:	14 c0       	rjmp	.+40     	; 0x136 <StepperMotor_TurnCCW+0x2c>
+		{
+			*STEPPER_MOTOR_OUT_REG &= (0x0FU);
+ 10e:	9b b3       	in	r25, 0x1b	; 27
+ 110:	9f 70       	andi	r25, 0x0F	; 15
+ 112:	9b bb       	out	0x1b, r25	; 27
+			*STEPPER_MOTOR_OUT_REG |= gau8StepperRotation[s8LocalLoopIndex];
+ 114:	2b b3       	in	r18, 0x1b	; 27
+ 116:	e8 2f       	mov	r30, r24
+ 118:	08 2e       	mov	r0, r24
+ 11a:	00 0c       	add	r0, r0
+ 11c:	ff 0b       	sbc	r31, r31
+ 11e:	e0 5a       	subi	r30, 0xA0	; 160
+ 120:	ff 4f       	sbci	r31, 0xFF	; 255
+ 122:	90 81       	ld	r25, Z
+ 124:	92 2b       	or	r25, r18
+ 126:	9b bb       	out	0x1b, r25	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 128:	ef ed       	ldi	r30, 0xDF	; 223
+ 12a:	fe e2       	ldi	r31, 0x2E	; 46
+ 12c:	31 97       	sbiw	r30, 0x01	; 1
+ 12e:	f1 f7       	brne	.-4      	; 0x12c <StepperMotor_TurnCCW+0x22>
+ 130:	00 c0       	rjmp	.+0      	; 0x132 <StepperMotor_TurnCCW+0x28>
+ 132:	00 00       	nop
+	}*/
+}
+void StepperMotor_TurnCCW(void){
+	sint8 s8LocalLoopIndex;
+	while(1){
+		for (s8LocalLoopIndex=3;s8LocalLoopIndex >= 0;s8LocalLoopIndex--)
+ 134:	81 50       	subi	r24, 0x01	; 1
+ 136:	88 23       	and	r24, r24
+ 138:	54 f7       	brge	.-44     	; 0x10e <StepperMotor_TurnCCW+0x4>
+ 13a:	e7 cf       	rjmp	.-50     	; 0x10a <StepperMotor_TurnCCW>
+
+0000013c <_exit>:
+ 13c:	f8 94       	cli
+
+0000013e <__stop_program>:
+ 13e:	ff cf       	rjmp	.-2      	; 0x13e <__stop_program>
