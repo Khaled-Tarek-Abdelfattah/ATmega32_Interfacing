@@ -5,13 +5,13 @@
 #include "ATMEGA32A_Config.h"
 #include "Dio.h"
 
-#define SSD_ControlDir_Reg		DIO_PORTB
-#define SSD_ControlEnable_Reg	DIO_PORTB
+#define SSD_ControlDir_Reg		PORTB_DIR_REG
+#define SSD_ControlEnable_Reg	PORTB_OUTPUT_REG
 
-#define SSD_DataDir_Reg		PORTA_DIR_REG
-#define SSD_DataValue_Reg	PORTA_OUTPUT_REG
+#define SSD_DataDir_Reg			PORTA_DIR_REG
+#define SSD_DataValue_Reg		PORTA_OUTPUT_REG
 
-#define SSD_TYPE          (SSD_COMMON_CATHODE)
+#define SSD_TYPE			    (SSD_COMMON_CATHODE)
 
 typedef enum
 {
