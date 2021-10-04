@@ -1,30 +1,56 @@
 #include "SWITCH_Interface.h"
 #include "Dio.h"
 
+#define DEBOUNCE_PERIOD (20U)
+
+Dio_PinStateEnum_t sw_PrevState = DIO_LOW;
+
 void Switch_Init(Switch_t switch_Button){
 	switch(switch_Button){
 		case SWITCH_0:
-				DioDirectionSet(DIO_PORTB,DIO_PIN0,DIO_INPUT);
+				DioDirectionSet(PORTB_DIR_REG,DIO_PIN0,DIO_INPUT);
 				break;
 			case SWITCH_1:
-				DioDirectionSet(DIO_PORTD,DIO_PIN6,DIO_INPUT);
+				DioDirectionSet(PORTD_DIR_REG,DIO_PIN6,DIO_INPUT);
 				break;
 			case SWITCH_2:
-				DioDirectionSet(DIO_PORTD,DIO_PIN2,DIO_INPUT);
+				DioDirectionSet(PORTD_DIR_REG,DIO_PIN2,DIO_INPUT);
 				break;
 	}
 }
 Switch_State_t Read_Switch(Switch_t Switch_Button){
+	Switch_State_t localSwitchState = SWITCH_REALEASED;
 	switch (Switch_Button)
 	{
 	case SWITCH_0 :
-		return DioChannelRead(DIO_PORTB,DIO_PIN0);
+		if (sw_PrevState != DioChannelRead(PORTB_INPUT_REG,DIO_PIN0))
+		{
+			_delay_ms(DEBOUNCE_PERIOD);
+			sw_PrevState = DioChannelRead(PORTB_INPUT_REG,DIO_PIN0);
+		}
+		localSwitchState = DioChannelRead(PORTB_INPUT_REG,DIO_PIN0);
+		return localSwitchState;
 		break;
 	case SWITCH_1 :
-		return DioChannelRead(DIO_PORTD,DIO_PIN6);
+		if (sw_PrevState != DioChannelRead(PORTD_INPUT_REG,DIO_PIN6))
+		{
+			_delay_ms(DEBOUNCE_PERIOD);
+			sw_PrevState = DioChannelRead(PORTD_INPUT_REG,DIO_PIN6);
+		}
+		localSwitchState = DioChannelRead(PORTD_INPUT_REG,DIO_PIN6);
+		return localSwitchState;
 		break;
 	case SWITCH_2 :
-		return DioChannelRead(DIO_PORTD,DIO_PIN2);
+		if (sw_PrevState != DioChannelRead(PORTD_INPUT_REG,DIO_PIN2))
+		{
+			_delay_ms(DEBOUNCE_PERIOD);
+			sw_PrevState = DioChannelRead(PORTD_INPUT_REG,DIO_PIN2);
+		}
+		localSwitchState = DioChannelRead(PORTD_INPUT_REG,DIO_PIN2);
+		return localSwitchState;
+		break;
+	default:
+		return localSwitchState;
 		break;
 	}
 }

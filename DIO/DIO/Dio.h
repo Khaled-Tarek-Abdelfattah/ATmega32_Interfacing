@@ -1,5 +1,9 @@
 #ifndef DIO_H_
 #define DIO_H_
+
+#include "ATMEGA32A_Config.h"
+#include "Macros.h"
+
 typedef enum
 {
 	DIO_PORTA,
@@ -22,8 +26,8 @@ typedef enum
 
 typedef enum
 {
-	DIO_LOW,
-	DIO_HIGH,
+	DIO_LOW=0,
+	DIO_HIGH=1,
 }Dio_PinStateEnum_t;
 
 typedef enum
@@ -32,8 +36,8 @@ typedef enum
 	DIO_OUTPUT
 }Dio_PinDirEnum_t;
 
-void DioDirectionSet(Dio_PortEnum_t port,Dio_PinEnum_t pin,Dio_PinDirEnum_t dir);
-void DioChannelWrite(Dio_PinEnum_t port,Dio_PinEnum_t pin,Dio_PinStateEnum_t state);
-void DioChannelToggle(Dio_PortEnum_t port,Dio_PinEnum_t pin);
-Dio_PinStateEnum_t DioChannelRead(Dio_PortEnum_t port,Dio_PinEnum_t pin);
+void DioDirectionSet(volatile uint8 * port,Dio_PinEnum_t pin,Dio_PinDirEnum_t dir);
+void DioChannelWrite(volatile uint8 * port,Dio_PinEnum_t pin,Dio_PinStateEnum_t state);
+void DioChannelToggle(volatile uint8 * port,Dio_PinEnum_t pin);
+Dio_PinStateEnum_t DioChannelRead(volatile uint8 * port,Dio_PinEnum_t pin);
 #endif
