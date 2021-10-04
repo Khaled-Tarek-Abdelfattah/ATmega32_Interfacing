@@ -12,7 +12,7 @@
 
 ISR(INT0_vect)
 {
-	/* Toggle LED */
+	/* Toggle LEDS */
 	Led_Toggle(LED_0);
 	Led_Toggle(LED_1);
 	Led_Toggle(LED_2);
