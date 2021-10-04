@@ -11,7 +11,7 @@
 
 
 #include "Dio.h"
-
+#include "util/delay.h"
 
 typedef enum{
 	SWITCH_0,
@@ -19,8 +19,8 @@ typedef enum{
 	SWITCH_2,
 }Switch_t;
 typedef enum{
-	SWITCH_REALEASED,
-	SWITCH_PUSHED,
+	SWITCH_REALEASED=0,
+	SWITCH_PUSHED=1
 }Switch_State_t;
 
 void Switch_Init(Switch_t switch_Button);
