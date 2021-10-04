@@ -11,7 +11,7 @@
 #define Return_Home				(0x02U)
 #define Display_On				(0x0CU|(LCD_Cursor<<1U)|(LCD_Cursor_Blink))
 #define Display_Off				(0x08U)
-#define Shift_Display_Left	(0x18U)
+#define Shift_Display_Left		(0x18U)
 #define Shift_Display_Right		(0x1CU)
 #define Shift_Cursor_Left		(0x10U)
 #define Shift_Cursor_Right		(0x14U)
