@@ -97,7 +97,7 @@ void Adc_ReadChannel(const Adc_ConfigType * ConfigPtr,Adc_ValueType * DataBuffer
 			*DataBufferPtr = *ADC_DATA_HIGH_REG;
 			break;
 			case ADC_10_BIT:
-			*DataBufferPtr = *(uint16*)ADC_DATA_LOW_REG;
+			*DataBufferPtr = (uint16)((*(uint16*)ADC_DATA_LOW_REG>>6U));
 			break;
 			default:
 			break;
