@@ -1,0 +1,734 @@
+
+GPT.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000422  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000012  00800060  00000422  000004b6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000004  00800072  00800072  000004c8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000004c8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000004f8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000118  00000000  00000000  00000534  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000134b  00000000  00000000  0000064c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000961  00000000  00000000  00001997  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000a41  00000000  00000000  000022f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001fc  00000000  00000000  00002d3c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000873  00000000  00000000  00002f38  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000007fd  00000000  00000000  000037ab  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000b0  00000000  00000000  00003fa8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 32 00 	jmp	0x64	; 0x64 <__ctors_end>
+   4:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+   8:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+   c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  10:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  14:	0c 94 c0 00 	jmp	0x180	; 0x180 <__vector_5>
+  18:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  1c:	0c 94 9b 00 	jmp	0x136	; 0x136 <__vector_7>
+  20:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  24:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  28:	0c 94 84 00 	jmp	0x108	; 0x108 <__vector_10>
+  2c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  30:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  34:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  38:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  3c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  40:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  44:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  48:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  4c:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  50:	0c 94 4f 00 	jmp	0x9e	; 0x9e <__bad_interrupt>
+  54:	34 01       	movw	r6, r8
+  56:	3a 01       	movw	r6, r20
+  58:	40 01       	movw	r8, r0
+  5a:	46 01       	movw	r8, r12
+  5c:	4c 01       	movw	r8, r24
+  5e:	52 01       	movw	r10, r4
+  60:	58 01       	movw	r10, r16
+  62:	5e 01       	movw	r10, r28
+
+00000064 <__ctors_end>:
+  64:	11 24       	eor	r1, r1
+  66:	1f be       	out	0x3f, r1	; 63
+  68:	cf e5       	ldi	r28, 0x5F	; 95
+  6a:	d8 e0       	ldi	r29, 0x08	; 8
+  6c:	de bf       	out	0x3e, r29	; 62
+  6e:	cd bf       	out	0x3d, r28	; 61
+
+00000070 <__do_copy_data>:
+  70:	10 e0       	ldi	r17, 0x00	; 0
+  72:	a0 e6       	ldi	r26, 0x60	; 96
+  74:	b0 e0       	ldi	r27, 0x00	; 0
+  76:	e2 e2       	ldi	r30, 0x22	; 34
+  78:	f4 e0       	ldi	r31, 0x04	; 4
+  7a:	02 c0       	rjmp	.+4      	; 0x80 <__do_copy_data+0x10>
+  7c:	05 90       	lpm	r0, Z+
+  7e:	0d 92       	st	X+, r0
+  80:	a2 37       	cpi	r26, 0x72	; 114
+  82:	b1 07       	cpc	r27, r17
+  84:	d9 f7       	brne	.-10     	; 0x7c <__do_copy_data+0xc>
+
+00000086 <__do_clear_bss>:
+  86:	20 e0       	ldi	r18, 0x00	; 0
+  88:	a2 e7       	ldi	r26, 0x72	; 114
+  8a:	b0 e0       	ldi	r27, 0x00	; 0
+  8c:	01 c0       	rjmp	.+2      	; 0x90 <.do_clear_bss_start>
+
+0000008e <.do_clear_bss_loop>:
+  8e:	1d 92       	st	X+, r1
+
+00000090 <.do_clear_bss_start>:
+  90:	a6 37       	cpi	r26, 0x76	; 118
+  92:	b2 07       	cpc	r27, r18
+  94:	e1 f7       	brne	.-8      	; 0x8e <.do_clear_bss_loop>
+  96:	0e 94 d7 00 	call	0x1ae	; 0x1ae <main>
+  9a:	0c 94 0f 02 	jmp	0x41e	; 0x41e <_exit>
+
+0000009e <__bad_interrupt>:
+  9e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a2 <Led_Init>:
+			switch(state){
+				case LED_ON:
+					DioChannelWrite(PORTD_OUTPUT_REG,DIO_PIN3,DIO_HIGH);
+					break;
+				case LED_OFF:
+					DioChannelWrite(PORTD_OUTPUT_REG,DIO_PIN3,DIO_LOW);
+  a2:	81 30       	cpi	r24, 0x01	; 1
+  a4:	59 f0       	breq	.+22     	; 0xbc <Led_Init+0x1a>
+  a6:	18 f0       	brcs	.+6      	; 0xae <Led_Init+0xc>
+  a8:	82 30       	cpi	r24, 0x02	; 2
+  aa:	79 f0       	breq	.+30     	; 0xca <Led_Init+0x28>
+  ac:	08 95       	ret
+  ae:	41 e0       	ldi	r20, 0x01	; 1
+  b0:	62 e0       	ldi	r22, 0x02	; 2
+  b2:	84 e3       	ldi	r24, 0x34	; 52
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	0e 94 0c 01 	call	0x218	; 0x218 <DioDirectionSet>
+  ba:	08 95       	ret
+  bc:	41 e0       	ldi	r20, 0x01	; 1
+  be:	67 e0       	ldi	r22, 0x07	; 7
+  c0:	84 e3       	ldi	r24, 0x34	; 52
+  c2:	90 e0       	ldi	r25, 0x00	; 0
+  c4:	0e 94 0c 01 	call	0x218	; 0x218 <DioDirectionSet>
+  c8:	08 95       	ret
+  ca:	41 e0       	ldi	r20, 0x01	; 1
+  cc:	63 e0       	ldi	r22, 0x03	; 3
+  ce:	81 e3       	ldi	r24, 0x31	; 49
+  d0:	90 e0       	ldi	r25, 0x00	; 0
+  d2:	0e 94 0c 01 	call	0x218	; 0x218 <DioDirectionSet>
+  d6:	08 95       	ret
+
+000000d8 <Led_Toggle>:
+		}
+		break;
+	}
+}
+void Led_Toggle(LedEnum_t led){
+	switch(led){
+  d8:	81 30       	cpi	r24, 0x01	; 1
+  da:	51 f0       	breq	.+20     	; 0xf0 <Led_Toggle+0x18>
+  dc:	18 f0       	brcs	.+6      	; 0xe4 <Led_Toggle+0xc>
+  de:	82 30       	cpi	r24, 0x02	; 2
+  e0:	69 f0       	breq	.+26     	; 0xfc <Led_Toggle+0x24>
+  e2:	08 95       	ret
+		case LED_0:
+			DioChannelToggle(PORTC_OUTPUT_REG,DIO_PIN2);
+  e4:	62 e0       	ldi	r22, 0x02	; 2
+  e6:	85 e3       	ldi	r24, 0x35	; 53
+  e8:	90 e0       	ldi	r25, 0x00	; 0
+  ea:	0e 94 2a 01 	call	0x254	; 0x254 <DioChannelToggle>
+			break;
+  ee:	08 95       	ret
+		case LED_1:
+			DioChannelToggle(PORTC_OUTPUT_REG,DIO_PIN7);
+  f0:	67 e0       	ldi	r22, 0x07	; 7
+  f2:	85 e3       	ldi	r24, 0x35	; 53
+  f4:	90 e0       	ldi	r25, 0x00	; 0
+  f6:	0e 94 2a 01 	call	0x254	; 0x254 <DioChannelToggle>
+			break;
+  fa:	08 95       	ret
+		case LED_2:
+			DioChannelToggle(PORTD_OUTPUT_REG,DIO_PIN3);
+  fc:	63 e0       	ldi	r22, 0x03	; 3
+  fe:	82 e3       	ldi	r24, 0x32	; 50
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+ 102:	0e 94 2a 01 	call	0x254	; 0x254 <DioChannelToggle>
+ 106:	08 95       	ret
+
+00000108 <__vector_10>:
+
+uint16 gu16Counter0 = 0U;
+uint16 gu16Counter2 = 0U;
+
+ISR(TIMER0_COMP_vect)
+{
+ 108:	1f 92       	push	r1
+ 10a:	0f 92       	push	r0
+ 10c:	0f b6       	in	r0, 0x3f	; 63
+ 10e:	0f 92       	push	r0
+ 110:	11 24       	eor	r1, r1
+ 112:	8f 93       	push	r24
+ 114:	9f 93       	push	r25
+	gu16Counter0++;
+ 116:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <gu16Counter0>
+ 11a:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <gu16Counter0+0x1>
+ 11e:	01 96       	adiw	r24, 0x01	; 1
+ 120:	90 93 75 00 	sts	0x0075, r25	; 0x800075 <gu16Counter0+0x1>
+ 124:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <gu16Counter0>
+}
+ 128:	9f 91       	pop	r25
+ 12a:	8f 91       	pop	r24
+ 12c:	0f 90       	pop	r0
+ 12e:	0f be       	out	0x3f, r0	; 63
+ 130:	0f 90       	pop	r0
+ 132:	1f 90       	pop	r1
+ 134:	18 95       	reti
+
+00000136 <__vector_7>:
+
+ISR(TIMER1_COMPA_vect)
+{
+ 136:	1f 92       	push	r1
+ 138:	0f 92       	push	r0
+ 13a:	0f b6       	in	r0, 0x3f	; 63
+ 13c:	0f 92       	push	r0
+ 13e:	11 24       	eor	r1, r1
+ 140:	2f 93       	push	r18
+ 142:	3f 93       	push	r19
+ 144:	4f 93       	push	r20
+ 146:	5f 93       	push	r21
+ 148:	6f 93       	push	r22
+ 14a:	7f 93       	push	r23
+ 14c:	8f 93       	push	r24
+ 14e:	9f 93       	push	r25
+ 150:	af 93       	push	r26
+ 152:	bf 93       	push	r27
+ 154:	ef 93       	push	r30
+ 156:	ff 93       	push	r31
+	Led_Toggle(LED_0);									/* 3 seconds */
+ 158:	80 e0       	ldi	r24, 0x00	; 0
+ 15a:	0e 94 6c 00 	call	0xd8	; 0xd8 <Led_Toggle>
+}
+ 15e:	ff 91       	pop	r31
+ 160:	ef 91       	pop	r30
+ 162:	bf 91       	pop	r27
+ 164:	af 91       	pop	r26
+ 166:	9f 91       	pop	r25
+ 168:	8f 91       	pop	r24
+ 16a:	7f 91       	pop	r23
+ 16c:	6f 91       	pop	r22
+ 16e:	5f 91       	pop	r21
+ 170:	4f 91       	pop	r20
+ 172:	3f 91       	pop	r19
+ 174:	2f 91       	pop	r18
+ 176:	0f 90       	pop	r0
+ 178:	0f be       	out	0x3f, r0	; 63
+ 17a:	0f 90       	pop	r0
+ 17c:	1f 90       	pop	r1
+ 17e:	18 95       	reti
+
+00000180 <__vector_5>:
+ISR(TIMER2_OVF_vect)
+{
+ 180:	1f 92       	push	r1
+ 182:	0f 92       	push	r0
+ 184:	0f b6       	in	r0, 0x3f	; 63
+ 186:	0f 92       	push	r0
+ 188:	11 24       	eor	r1, r1
+ 18a:	8f 93       	push	r24
+ 18c:	9f 93       	push	r25
+	gu16Counter2++;
+ 18e:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end>
+ 192:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x1>
+ 196:	01 96       	adiw	r24, 0x01	; 1
+ 198:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x1>
+ 19c:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end>
+}
+ 1a0:	9f 91       	pop	r25
+ 1a2:	8f 91       	pop	r24
+ 1a4:	0f 90       	pop	r0
+ 1a6:	0f be       	out	0x3f, r0	; 63
+ 1a8:	0f 90       	pop	r0
+ 1aa:	1f 90       	pop	r1
+ 1ac:	18 95       	reti
+
+000001ae <main>:
+
+int main(void)
+{
+    Gpt_Init(&gaStrGpt0_Configuration);
+ 1ae:	8c e6       	ldi	r24, 0x6C	; 108
+ 1b0:	90 e0       	ldi	r25, 0x00	; 0
+ 1b2:	0e 94 78 01 	call	0x2f0	; 0x2f0 <Gpt_Init>
+	Gpt_Init(&gaStrGpt1_Configuration);
+ 1b6:	86 e6       	ldi	r24, 0x66	; 102
+ 1b8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ba:	0e 94 78 01 	call	0x2f0	; 0x2f0 <Gpt_Init>
+	Gpt_Init(&gaStrGpt2_Configuration);
+ 1be:	80 e6       	ldi	r24, 0x60	; 96
+ 1c0:	90 e0       	ldi	r25, 0x00	; 0
+ 1c2:	0e 94 78 01 	call	0x2f0	; 0x2f0 <Gpt_Init>
+	GlobaleInterrupts_StateSet(GLOBAL_INTERRUPTS_ENABLE);
+ 1c6:	81 e0       	ldi	r24, 0x01	; 1
+ 1c8:	0e 94 63 01 	call	0x2c6	; 0x2c6 <GlobaleInterrupts_StateSet>
+	Led_Init(LED_0);
+ 1cc:	80 e0       	ldi	r24, 0x00	; 0
+ 1ce:	0e 94 51 00 	call	0xa2	; 0xa2 <Led_Init>
+	Led_Init(LED_1);
+ 1d2:	81 e0       	ldi	r24, 0x01	; 1
+ 1d4:	0e 94 51 00 	call	0xa2	; 0xa2 <Led_Init>
+	Led_Init(LED_2);
+ 1d8:	82 e0       	ldi	r24, 0x02	; 2
+ 1da:	0e 94 51 00 	call	0xa2	; 0xa2 <Led_Init>
+    while (1) 
+    {
+		if (gu16Counter0>=391U)
+ 1de:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <gu16Counter0>
+ 1e2:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <gu16Counter0+0x1>
+ 1e6:	87 38       	cpi	r24, 0x87	; 135
+ 1e8:	91 40       	sbci	r25, 0x01	; 1
+ 1ea:	38 f0       	brcs	.+14     	; 0x1fa <main+0x4c>
+		{
+			Led_Toggle(LED_1);							/* 5 seconds */
+ 1ec:	81 e0       	ldi	r24, 0x01	; 1
+ 1ee:	0e 94 6c 00 	call	0xd8	; 0xd8 <Led_Toggle>
+			gu16Counter0 = 0;
+ 1f2:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <gu16Counter0+0x1>
+ 1f6:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <gu16Counter0>
+		}
+		if (gu16Counter2>=977U)
+ 1fa:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end>
+ 1fe:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x1>
+ 202:	81 3d       	cpi	r24, 0xD1	; 209
+ 204:	93 40       	sbci	r25, 0x03	; 3
+ 206:	58 f3       	brcs	.-42     	; 0x1de <main+0x30>
+		{
+			Led_Toggle(LED_2);							/* 4 seconds */
+ 208:	82 e0       	ldi	r24, 0x02	; 2
+ 20a:	0e 94 6c 00 	call	0xd8	; 0xd8 <Led_Toggle>
+			gu16Counter2 = 0;
+ 20e:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <__data_end+0x1>
+ 212:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <__data_end>
+ 216:	e3 cf       	rjmp	.-58     	; 0x1de <main+0x30>
+
+00000218 <DioDirectionSet>:
+			break;
+		default:
+			break;
+	}
+	
+}
+ 218:	44 23       	and	r20, r20
+ 21a:	19 f0       	breq	.+6      	; 0x222 <DioDirectionSet+0xa>
+ 21c:	41 30       	cpi	r20, 0x01	; 1
+ 21e:	71 f0       	breq	.+28     	; 0x23c <DioDirectionSet+0x24>
+ 220:	08 95       	ret
+ 222:	fc 01       	movw	r30, r24
+ 224:	40 81       	ld	r20, Z
+ 226:	21 e0       	ldi	r18, 0x01	; 1
+ 228:	30 e0       	ldi	r19, 0x00	; 0
+ 22a:	02 c0       	rjmp	.+4      	; 0x230 <DioDirectionSet+0x18>
+ 22c:	22 0f       	add	r18, r18
+ 22e:	33 1f       	adc	r19, r19
+ 230:	6a 95       	dec	r22
+ 232:	e2 f7       	brpl	.-8      	; 0x22c <DioDirectionSet+0x14>
+ 234:	20 95       	com	r18
+ 236:	24 23       	and	r18, r20
+ 238:	20 83       	st	Z, r18
+ 23a:	08 95       	ret
+ 23c:	fc 01       	movw	r30, r24
+ 23e:	40 81       	ld	r20, Z
+ 240:	21 e0       	ldi	r18, 0x01	; 1
+ 242:	30 e0       	ldi	r19, 0x00	; 0
+ 244:	02 c0       	rjmp	.+4      	; 0x24a <DioDirectionSet+0x32>
+ 246:	22 0f       	add	r18, r18
+ 248:	33 1f       	adc	r19, r19
+ 24a:	6a 95       	dec	r22
+ 24c:	e2 f7       	brpl	.-8      	; 0x246 <DioDirectionSet+0x2e>
+ 24e:	24 2b       	or	r18, r20
+ 250:	20 83       	st	Z, r18
+ 252:	08 95       	ret
+
+00000254 <DioChannelToggle>:
+void DioChannelToggle(volatile uint8 * port,Dio_PinEnum_t pin){
+	switch(pin){
+ 254:	46 2f       	mov	r20, r22
+ 256:	50 e0       	ldi	r21, 0x00	; 0
+ 258:	48 30       	cpi	r20, 0x08	; 8
+ 25a:	51 05       	cpc	r21, r1
+ 25c:	98 f5       	brcc	.+102    	; 0x2c4 <DioChannelToggle+0x70>
+ 25e:	fa 01       	movw	r30, r20
+ 260:	e6 5d       	subi	r30, 0xD6	; 214
+ 262:	ff 4f       	sbci	r31, 0xFF	; 255
+ 264:	0c 94 09 02 	jmp	0x412	; 0x412 <__tablejump2__>
+		case DIO_PIN0:
+			TOGGLE_BIT(*port,DIO_PIN0);
+ 268:	fc 01       	movw	r30, r24
+ 26a:	30 81       	ld	r19, Z
+ 26c:	21 e0       	ldi	r18, 0x01	; 1
+ 26e:	23 27       	eor	r18, r19
+ 270:	20 83       	st	Z, r18
+			break;
+ 272:	08 95       	ret
+		case DIO_PIN1:
+			TOGGLE_BIT(*port,DIO_PIN1);
+ 274:	fc 01       	movw	r30, r24
+ 276:	30 81       	ld	r19, Z
+ 278:	22 e0       	ldi	r18, 0x02	; 2
+ 27a:	23 27       	eor	r18, r19
+ 27c:	20 83       	st	Z, r18
+			break;
+ 27e:	08 95       	ret
+		case DIO_PIN2:
+			TOGGLE_BIT(*port,DIO_PIN2);
+ 280:	fc 01       	movw	r30, r24
+ 282:	30 81       	ld	r19, Z
+ 284:	24 e0       	ldi	r18, 0x04	; 4
+ 286:	23 27       	eor	r18, r19
+ 288:	20 83       	st	Z, r18
+			break;
+ 28a:	08 95       	ret
+		case DIO_PIN3:
+			TOGGLE_BIT(*port,DIO_PIN3);
+ 28c:	fc 01       	movw	r30, r24
+ 28e:	30 81       	ld	r19, Z
+ 290:	28 e0       	ldi	r18, 0x08	; 8
+ 292:	23 27       	eor	r18, r19
+ 294:	20 83       	st	Z, r18
+			break;
+ 296:	08 95       	ret
+		case DIO_PIN4:
+			TOGGLE_BIT(*port,DIO_PIN4);
+ 298:	fc 01       	movw	r30, r24
+ 29a:	30 81       	ld	r19, Z
+ 29c:	20 e1       	ldi	r18, 0x10	; 16
+ 29e:	23 27       	eor	r18, r19
+ 2a0:	20 83       	st	Z, r18
+			break;
+ 2a2:	08 95       	ret
+		case DIO_PIN5:
+			TOGGLE_BIT(*port,DIO_PIN5);
+ 2a4:	fc 01       	movw	r30, r24
+ 2a6:	30 81       	ld	r19, Z
+ 2a8:	20 e2       	ldi	r18, 0x20	; 32
+ 2aa:	23 27       	eor	r18, r19
+ 2ac:	20 83       	st	Z, r18
+			break;
+ 2ae:	08 95       	ret
+		case DIO_PIN6:
+			TOGGLE_BIT(*port,DIO_PIN6);
+ 2b0:	fc 01       	movw	r30, r24
+ 2b2:	30 81       	ld	r19, Z
+ 2b4:	20 e4       	ldi	r18, 0x40	; 64
+ 2b6:	23 27       	eor	r18, r19
+ 2b8:	20 83       	st	Z, r18
+			break;
+ 2ba:	08 95       	ret
+		case DIO_PIN7:
+			TOGGLE_BIT(*port,DIO_PIN7);
+ 2bc:	fc 01       	movw	r30, r24
+ 2be:	20 81       	ld	r18, Z
+ 2c0:	20 58       	subi	r18, 0x80	; 128
+ 2c2:	20 83       	st	Z, r18
+ 2c4:	08 95       	ret
+
+000002c6 <GlobaleInterrupts_StateSet>:
+		break;
+	}
+}
+void GlobaleInterrupts_StateSet(GlobalInterruptsStateEnum_t State)
+{
+	switch(State)
+ 2c6:	88 23       	and	r24, r24
+ 2c8:	19 f0       	breq	.+6      	; 0x2d0 <GlobaleInterrupts_StateSet+0xa>
+ 2ca:	81 30       	cpi	r24, 0x01	; 1
+ 2cc:	29 f0       	breq	.+10     	; 0x2d8 <GlobaleInterrupts_StateSet+0x12>
+ 2ce:	08 95       	ret
+	{
+		case GLOBAL_INTERRUPTS_DISABLE:
+		CLEAR_BIT(*AVR_STATUS_REG, GLOBALE_INTERRUPTS_ENABLE_BIT);
+ 2d0:	8f b7       	in	r24, 0x3f	; 63
+ 2d2:	8f 77       	andi	r24, 0x7F	; 127
+ 2d4:	8f bf       	out	0x3f, r24	; 63
+		break;
+ 2d6:	08 95       	ret
+		case GLOBAL_INTERRUPTS_ENABLE:
+		SET_BIT(*AVR_STATUS_REG, GLOBALE_INTERRUPTS_ENABLE_BIT);
+ 2d8:	8f b7       	in	r24, 0x3f	; 63
+ 2da:	80 68       	ori	r24, 0x80	; 128
+ 2dc:	8f bf       	out	0x3f, r24	; 63
+ 2de:	08 95       	ret
+
+000002e0 <Gpt_Timer1InitReg>:
+	return (localEnumGptStatus);
+}
+
+static void Gpt_Timer1InitReg(void)
+{
+	*TIMER1_CMP_B_HIGH_REG = 0x00U;
+ 2e0:	19 bc       	out	0x29, r1	; 41
+	*TIMER1_CMP_B_LOW_REG = 0x00U;
+ 2e2:	18 bc       	out	0x28, r1	; 40
+	*TIMER1_CTRL_A_REG = 0x00U;
+ 2e4:	1f bc       	out	0x2f, r1	; 47
+	*TIMER1_CTRL_B_REG = 0x00U;
+ 2e6:	1e bc       	out	0x2e, r1	; 46
+	*TIMER_INTERRUPT_MASK_REG &= (0xC3U);
+ 2e8:	89 b7       	in	r24, 0x39	; 57
+ 2ea:	83 7c       	andi	r24, 0xC3	; 195
+ 2ec:	89 bf       	out	0x39, r24	; 57
+ 2ee:	08 95       	ret
+
+000002f0 <Gpt_Init>:
+#include "Gpt.h"
+
+static void Gpt_Timer1InitReg(void);
+
+void Gpt_Init(const Gpt_ConfigType* ConfigPtr)
+{
+ 2f0:	cf 93       	push	r28
+ 2f2:	df 93       	push	r29
+ 2f4:	fc 01       	movw	r30, r24
+	switch(ConfigPtr->GptNo)
+ 2f6:	80 81       	ld	r24, Z
+ 2f8:	81 30       	cpi	r24, 0x01	; 1
+ 2fa:	69 f1       	breq	.+90     	; 0x356 <Gpt_Init+0x66>
+ 2fc:	20 f0       	brcs	.+8      	; 0x306 <Gpt_Init+0x16>
+ 2fe:	82 30       	cpi	r24, 0x02	; 2
+ 300:	09 f4       	brne	.+2      	; 0x304 <Gpt_Init+0x14>
+ 302:	56 c0       	rjmp	.+172    	; 0x3b0 <Gpt_Init+0xc0>
+ 304:	83 c0       	rjmp	.+262    	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+	{
+		case GPT_TIMER0:
+		/*!Comment: first initialize timer0 control reg */
+		*TIMER0_CTRL_REG = 0x00U;
+ 306:	13 be       	out	0x33, r1	; 51
+		*TIMER0_CMP_REG = 0x00U;
+ 308:	1c be       	out	0x3c, r1	; 60
+		*TIMER_INTERRUPT_MASK_REG &= (0xFCU);
+ 30a:	89 b7       	in	r24, 0x39	; 57
+ 30c:	8c 7f       	andi	r24, 0xFC	; 252
+ 30e:	89 bf       	out	0x39, r24	; 57
+		/*!Comment: Start initialization */
+		switch(ConfigPtr->GptMode)
+ 310:	81 81       	ldd	r24, Z+1	; 0x01
+ 312:	88 23       	and	r24, r24
+ 314:	19 f0       	breq	.+6      	; 0x31c <Gpt_Init+0x2c>
+ 316:	88 30       	cpi	r24, 0x08	; 8
+ 318:	41 f0       	breq	.+16     	; 0x32a <Gpt_Init+0x3a>
+ 31a:	17 c0       	rjmp	.+46     	; 0x34a <Gpt_Init+0x5a>
+		{
+			case GPT_NORMAL_MODE:
+			*TIMER0_CTRL_REG |= GPT_NORMAL_MODE;
+ 31c:	83 b7       	in	r24, 0x33	; 51
+ 31e:	83 bf       	out	0x33, r24	; 51
+			*TIMER_INTERRUPT_MASK_REG |= (ConfigPtr->GptIntState<<TIMER0_OV_INT_ENABLE);
+ 320:	99 b7       	in	r25, 0x39	; 57
+ 322:	83 81       	ldd	r24, Z+3	; 0x03
+ 324:	89 2b       	or	r24, r25
+ 326:	89 bf       	out	0x39, r24	; 57
+			break;
+ 328:	10 c0       	rjmp	.+32     	; 0x34a <Gpt_Init+0x5a>
+			case GPT_CTC_MODE:
+			*TIMER0_CTRL_REG |= GPT_CTC_MODE;
+ 32a:	83 b7       	in	r24, 0x33	; 51
+ 32c:	88 60       	ori	r24, 0x08	; 8
+ 32e:	83 bf       	out	0x33, r24	; 51
+			*TIMER_INTERRUPT_MASK_REG |= (ConfigPtr->GptIntState<<TIMER0_CMPMATCH_INT_ENABLE);
+ 330:	29 b7       	in	r18, 0x39	; 57
+ 332:	93 81       	ldd	r25, Z+3	; 0x03
+ 334:	89 2f       	mov	r24, r25
+ 336:	90 e0       	ldi	r25, 0x00	; 0
+ 338:	88 0f       	add	r24, r24
+ 33a:	99 1f       	adc	r25, r25
+ 33c:	82 2b       	or	r24, r18
+ 33e:	89 bf       	out	0x39, r24	; 57
+			*TIMER0_CMP_REG |= (ConfigPtr->GptCmpValue-1);
+ 340:	9c b7       	in	r25, 0x3c	; 60
+ 342:	84 81       	ldd	r24, Z+4	; 0x04
+ 344:	81 50       	subi	r24, 0x01	; 1
+ 346:	89 2b       	or	r24, r25
+ 348:	8c bf       	out	0x3c, r24	; 60
+			break;
+			default:
+			break;
+		}
+		*TIMER0_CTRL_REG |= ConfigPtr->GptClkDivision;
+ 34a:	93 b7       	in	r25, 0x33	; 51
+ 34c:	82 81       	ldd	r24, Z+2	; 0x02
+ 34e:	89 2b       	or	r24, r25
+ 350:	83 bf       	out	0x33, r24	; 51
+		*TIMER0_COUNTER_REG = 0x00U;
+ 352:	12 be       	out	0x32, r1	; 50
+		break;
+ 354:	5b c0       	rjmp	.+182    	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+ 356:	ef 01       	movw	r28, r30
+		case GPT_TIMER1:
+		Gpt_Timer1InitReg();
+ 358:	0e 94 70 01 	call	0x2e0	; 0x2e0 <Gpt_Timer1InitReg>
+		switch(ConfigPtr->GptMode)
+ 35c:	89 81       	ldd	r24, Y+1	; 0x01
+ 35e:	88 23       	and	r24, r24
+ 360:	19 f0       	breq	.+6      	; 0x368 <Gpt_Init+0x78>
+ 362:	88 30       	cpi	r24, 0x08	; 8
+ 364:	71 f0       	breq	.+28     	; 0x382 <Gpt_Init+0x92>
+ 366:	1d c0       	rjmp	.+58     	; 0x3a2 <Gpt_Init+0xb2>
+		{
+			case GPT_NORMAL_MODE:
+			*TIMER1_CTRL_B_REG |= GPT_NORMAL_MODE;
+ 368:	8e b5       	in	r24, 0x2e	; 46
+ 36a:	8e bd       	out	0x2e, r24	; 46
+			*TIMER_INTERRUPT_MASK_REG |= ((ConfigPtr->GptIntState)<<TIMER1_OV_INT_ENABLE);
+ 36c:	29 b7       	in	r18, 0x39	; 57
+ 36e:	9b 81       	ldd	r25, Y+3	; 0x03
+ 370:	89 2f       	mov	r24, r25
+ 372:	90 e0       	ldi	r25, 0x00	; 0
+ 374:	88 0f       	add	r24, r24
+ 376:	99 1f       	adc	r25, r25
+ 378:	88 0f       	add	r24, r24
+ 37a:	99 1f       	adc	r25, r25
+ 37c:	82 2b       	or	r24, r18
+ 37e:	89 bf       	out	0x39, r24	; 57
+			break;
+ 380:	10 c0       	rjmp	.+32     	; 0x3a2 <Gpt_Init+0xb2>
+			case GPT_CTC_MODE:
+			*TIMER1_CTRL_B_REG |= GPT_CTC_MODE;
+ 382:	8e b5       	in	r24, 0x2e	; 46
+ 384:	88 60       	ori	r24, 0x08	; 8
+ 386:	8e bd       	out	0x2e, r24	; 46
+			*TIMER_INTERRUPT_MASK_REG |= ((ConfigPtr->GptIntState)<<TIMER1_CMP_A_INT_ENABLE);
+ 388:	29 b7       	in	r18, 0x39	; 57
+ 38a:	9b 81       	ldd	r25, Y+3	; 0x03
+ 38c:	30 e1       	ldi	r19, 0x10	; 16
+ 38e:	93 9f       	mul	r25, r19
+ 390:	c0 01       	movw	r24, r0
+ 392:	11 24       	eor	r1, r1
+ 394:	82 2b       	or	r24, r18
+ 396:	89 bf       	out	0x39, r24	; 57
+			*(uint16*)TIMER1_CMP_A_LOW_REG = (ConfigPtr->GptCmpValue - 1);
+ 398:	8c 81       	ldd	r24, Y+4	; 0x04
+ 39a:	9d 81       	ldd	r25, Y+5	; 0x05
+ 39c:	01 97       	sbiw	r24, 0x01	; 1
+ 39e:	9b bd       	out	0x2b, r25	; 43
+ 3a0:	8a bd       	out	0x2a, r24	; 42
+			break;
+			default:
+			break;
+		}
+		*TIMER1_CTRL_B_REG |= ConfigPtr->GptClkDivision;
+ 3a2:	9e b5       	in	r25, 0x2e	; 46
+ 3a4:	8a 81       	ldd	r24, Y+2	; 0x02
+ 3a6:	89 2b       	or	r24, r25
+ 3a8:	8e bd       	out	0x2e, r24	; 46
+		*(uint16*)TIMER1_COUNT_LOW_REG = 0x0000U;
+ 3aa:	1d bc       	out	0x2d, r1	; 45
+ 3ac:	1c bc       	out	0x2c, r1	; 44
+		break;
+ 3ae:	2e c0       	rjmp	.+92     	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+		case GPT_TIMER2:
+		*TIMER2_CTRL_REG = 0x00U;
+ 3b0:	15 bc       	out	0x25, r1	; 37
+		*TIMER2_CMP_REG = 0x00U;
+ 3b2:	13 bc       	out	0x23, r1	; 35
+		*TIMER_INTERRUPT_MASK_REG &= (0x3FU);
+ 3b4:	89 b7       	in	r24, 0x39	; 57
+ 3b6:	8f 73       	andi	r24, 0x3F	; 63
+ 3b8:	89 bf       	out	0x39, r24	; 57
+		/*!Comment: Start initialization */
+		switch(ConfigPtr->GptMode)
+ 3ba:	81 81       	ldd	r24, Z+1	; 0x01
+ 3bc:	88 23       	and	r24, r24
+ 3be:	19 f0       	breq	.+6      	; 0x3c6 <Gpt_Init+0xd6>
+ 3c0:	88 30       	cpi	r24, 0x08	; 8
+ 3c2:	61 f0       	breq	.+24     	; 0x3dc <Gpt_Init+0xec>
+ 3c4:	1b c0       	rjmp	.+54     	; 0x3fc <Gpt_Init+0x10c>
+		{
+			case GPT_NORMAL_MODE:
+			*TIMER2_CTRL_REG |= GPT_NORMAL_MODE;
+ 3c6:	85 b5       	in	r24, 0x25	; 37
+ 3c8:	85 bd       	out	0x25, r24	; 37
+			*TIMER_INTERRUPT_MASK_REG |= ((ConfigPtr->GptIntState)<<TIMER2_OV_INT_ENABLE);
+ 3ca:	29 b7       	in	r18, 0x39	; 57
+ 3cc:	93 81       	ldd	r25, Z+3	; 0x03
+ 3ce:	30 e4       	ldi	r19, 0x40	; 64
+ 3d0:	93 9f       	mul	r25, r19
+ 3d2:	c0 01       	movw	r24, r0
+ 3d4:	11 24       	eor	r1, r1
+ 3d6:	82 2b       	or	r24, r18
+ 3d8:	89 bf       	out	0x39, r24	; 57
+			break;
+ 3da:	10 c0       	rjmp	.+32     	; 0x3fc <Gpt_Init+0x10c>
+			case GPT_CTC_MODE:
+			*TIMER2_CTRL_REG |= GPT_CTC_MODE;
+ 3dc:	85 b5       	in	r24, 0x25	; 37
+ 3de:	88 60       	ori	r24, 0x08	; 8
+ 3e0:	85 bd       	out	0x25, r24	; 37
+			*TIMER_INTERRUPT_MASK_REG |= ((ConfigPtr->GptIntState)<<TIMER2_CMPMATCH_INT_ENABLE);
+ 3e2:	29 b7       	in	r18, 0x39	; 57
+ 3e4:	93 81       	ldd	r25, Z+3	; 0x03
+ 3e6:	30 e8       	ldi	r19, 0x80	; 128
+ 3e8:	93 9f       	mul	r25, r19
+ 3ea:	c0 01       	movw	r24, r0
+ 3ec:	11 24       	eor	r1, r1
+ 3ee:	82 2b       	or	r24, r18
+ 3f0:	89 bf       	out	0x39, r24	; 57
+			*TIMER2_CMP_REG |= (ConfigPtr->GptCmpValue-1);
+ 3f2:	93 b5       	in	r25, 0x23	; 35
+ 3f4:	84 81       	ldd	r24, Z+4	; 0x04
+ 3f6:	81 50       	subi	r24, 0x01	; 1
+ 3f8:	89 2b       	or	r24, r25
+ 3fa:	83 bd       	out	0x23, r24	; 35
+			break;
+			default:
+			break;
+		}
+		SET_BIT(*SPECIAL_FUNCTION_REG,2U);
+ 3fc:	80 b7       	in	r24, 0x30	; 48
+ 3fe:	84 60       	ori	r24, 0x04	; 4
+ 400:	80 bf       	out	0x30, r24	; 48
+		*TIMER2_CTRL_REG |= ConfigPtr->GptClkDivision;
+ 402:	95 b5       	in	r25, 0x25	; 37
+ 404:	82 81       	ldd	r24, Z+2	; 0x02
+ 406:	89 2b       	or	r24, r25
+ 408:	85 bd       	out	0x25, r24	; 37
+		*TIMER2_COUNTER_REG = 0x00U;
+ 40a:	14 bc       	out	0x24, r1	; 36
+		break;
+		default:
+		break;
+	}
+}
+ 40c:	df 91       	pop	r29
+ 40e:	cf 91       	pop	r28
+ 410:	08 95       	ret
+
+00000412 <__tablejump2__>:
+ 412:	ee 0f       	add	r30, r30
+ 414:	ff 1f       	adc	r31, r31
+ 416:	05 90       	lpm	r0, Z+
+ 418:	f4 91       	lpm	r31, Z
+ 41a:	e0 2d       	mov	r30, r0
+ 41c:	09 94       	ijmp
+
+0000041e <_exit>:
+ 41e:	f8 94       	cli
+
+00000420 <__stop_program>:
+ 420:	ff cf       	rjmp	.-2      	; 0x420 <__stop_program>
