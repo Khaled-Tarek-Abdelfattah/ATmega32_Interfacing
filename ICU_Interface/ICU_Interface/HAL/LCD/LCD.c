@@ -116,10 +116,42 @@ void LCD_RowCol_Select(uint8 Row, uint8 Col)
 	_delay_ms(2);
 }
 
-void LCD_IntegerDisplay(uint32 num){
+void LCD_SignedIntegerDisplay(sint32 num)
+{
 	char Integer_ascii [17];
 	itoa(num,Integer_ascii,10);
 	LCD_StringDisplay(Integer_ascii);
+}
+
+void LCD_UnsignedIntegerDisplay(uint32 num)
+{
+	uint16 v1=0U;
+	uint16 v2=0U;
+	uint16 v3=0U;
+	uint16 v4=0U;
+	uint16 v5=0U;
+	if (num > 9999U)
+	{
+		v1 = (uint8)(num/10000);
+		LCD_CharDisplay((v1+48U));
+	}
+	if (num>999)
+	{
+		v2 = (uint8)((num-(v1*10000))/1000);
+		LCD_CharDisplay((v2+48U));
+	}
+	if (num>99)
+	{
+		v3 = (uint8)((num-(v1*10000)-(v2*1000))/100);
+		LCD_CharDisplay((v3+48U));
+	}
+	if (num>99)
+	{
+		v4 = (uint8)((num-(v1*10000)-(v2*1000)-(v3*100))/10);
+		LCD_CharDisplay((v4+48U));
+	}
+	v5 = (uint8)((num-(v1*10000)-(v2*1000)-(v3*100)-(v4*10))/1);
+	LCD_CharDisplay((v5+48U));
 }
 
 void LCD_Cursor_ShiftLeft(){

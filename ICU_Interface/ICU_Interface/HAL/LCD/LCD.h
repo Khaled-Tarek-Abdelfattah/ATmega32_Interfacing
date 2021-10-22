@@ -31,7 +31,8 @@ void LCD_Clear(void);
 void LCD_RowCol_Select(uint8 Row, uint8 Col);
 
 void LCD_StringDisplay (char *string);
-void LCD_IntegerDisplay (uint32 num);
+void LCD_SignedIntegerDisplay (sint32 num);
+void LCD_UnsignedIntegerDisplay(uint32 num);
 void LCD_Cursor_ShiftLeft();
 void LCD_Cursor_ShiftRight();
 void LCD_Display_ShiftLeft();

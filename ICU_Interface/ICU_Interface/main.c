@@ -26,10 +26,7 @@ int main(void)
 	GlobaleInterrupts_StateSet(GLOBAL_INTERRUPTS_ENABLE);
     while (1)
     {
-		/*!Comment:Any value above 32767 will printed on LCD a negative value because
-		 LCD_IntegerDisplay is implemented by function itoa which it's range from -32768
-		 to 32767 but the variable gu16Value has the exact number*/
-		LCD_IntegerDisplay(gu16Value);
+		LCD_UnsignedIntegerDisplay(gu16Value);
 		_delay_ms(500);
 		LCD_Clear();
     }
